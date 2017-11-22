@@ -8,9 +8,9 @@
     <relativePath />
   </parent>
   <groupId>oracle.paas.accs</groupId>
-  <artifactId>logsink</artifactId>
+  <artifactId>log-sink</artifactId>
   <version>1.0.0-SNAPSHOT</version>
-  <name>logsink</name>
+  <name>log-sink</name>
   <description>Stream app to consume kafka message and log them in console</description>
   <properties>
     <skipTests>true</skipTests>
