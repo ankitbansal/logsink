@@ -18,14 +18,33 @@ package org.springframework.cloud.stream.app.log.sink.kafka;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.stream.app.log.sink.kafka.controller.MaxSizeHashMap;
 import org.springframework.context.annotation.Import;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.FileOutputStream;
+import java.util.Map;
 
 
 @SpringBootApplication
-@Import(org.springframework.cloud.stream.app.log.sink.LogSinkConfiguration.class)
+@Import(LogSinkConfiguration.class)
 public class LogSinkKafkaApplication {
 
-	public static void main(String[] args) {
+	@RequestMapping("/console")
+	public void latestMessages(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		ServletOutputStream out = response.getOutputStream();
+		MaxSizeHashMap<String, String> instance = MaxSizeHashMap.instance;
+		for(Map.Entry<String, String> entry: instance.entrySet()) {
+			out.println(entry.getValue());
+		}
+
+		out.close();
+	}
+	
+	public static void main(String[] args) throws Exception {
 		SpringApplication.run(LogSinkKafkaApplication.class, args);
 	}
 }

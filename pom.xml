@@ -118,4 +118,21 @@
       </plugin>
     </plugins>
   </build>
+
+
+<distributionManagement>
+  <repository>
+    <id>ACCS SCDF_repo</id>
+    <name>ACCS SCDF Maven Repository</name>
+    <url>https://developer.us2.oraclecloud.com/profile/developer48597-ocloud100/s/developer48597-ocloud100_accs-scdf_21925/maven/</url>
+  </repository>
+  <snapshotRepository>
+    <id>ACCS SCDF_repo</id>
+    <name>ACCS SCDFMaven Repository</name>
+    <url>https://developer.us2.oraclecloud.com/profile/developer48597-ocloud100/s/developer48597-ocloud100_accs-scdf_21925/maven/</url>
+  </snapshotRepository>
+</distributionManagement>
+
+
 </project>
+
